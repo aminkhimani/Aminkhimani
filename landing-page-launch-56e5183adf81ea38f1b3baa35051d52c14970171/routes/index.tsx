@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Linkedin,
   Instagram,
+  Youtube,
   Mail,
   ArrowRight,
   ArrowUpRight,
@@ -21,10 +22,10 @@ import {
   ArrowUp,
 } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
-import projectLandCruiser from "@/assets/project-land-cruiser.jpg";
-import projectSitara from "@/assets/project-sitara.jpg";
-import project3Bahadur from "@/assets/project-3bahadur.jpg";
-import projectUmroAyyar from "@/assets/project-umro-ayyar.png";
+import work1 from "@/assets/work-1.jpg";
+import work2 from "@/assets/work-2.jpg";
+import work3 from "@/assets/work-3.jpg";
+import work4 from "@/assets/work-4.jpg";
 import showreelImg from "@/assets/showreel.jpg";
 import resumeUrl from "@/assets/Amin_Khimani_Resume.pdf";
 
@@ -43,39 +44,13 @@ const services = [
   { icon: PenTool, label: "Concept Design" },
 ];
 
-const filters = [
-  "All",
-  "3D and Composite",
-  "Motion Graphics and Commercials",
-  "Graphic Design and Social Media",
-  "AI Videos and UGCs",
-];
+const filters = ["All", "VFX", "Motion Graphics", "3D", "Editing", "AI"];
 
 const projects = [
-  {
-    img: projectLandCruiser,
-    title: "Land Cruiser 2022 World Premiere",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=CyRb6fstU3M",
-  },
-  {
-    img: projectSitara,
-    title: "Sitara: Let Girls Dream",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=EztDSGZb2xY",
-  },
-  {
-    img: project3Bahadur,
-    title: "3 Bahadur: Rise of the Warriors",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=ZrFGEbvuweo",
-  },
-  {
-    img: projectUmroAyyar,
-    title: "Umro Ayyar: A New Beginning",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=qO4kobD35kM",
-  },
+  { img: work1, title: "Cinematic Trailer", tag: "VFX & Compositing" },
+  { img: work2, title: "Brand Film", tag: "Motion Design" },
+  { img: work3, title: "3D Product Launch", tag: "3D Animation" },
+  { img: work4, title: "Music Video", tag: "Editing" },
 ];
 
 const stats = [
@@ -238,30 +213,12 @@ function Index() {
           {/* Social rail */}
           <div className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 hidden md:block z-20">
             <div className="flex flex-col items-center gap-4 rounded-lg border border-border bg-background/60 px-2 py-4">
-              {[
-                {
-                  Icon: Linkedin,
-                  href: "https://www.linkedin.com/in/amin-h-khimani-05690626/",
-                  label: "LinkedIn",
-                },
-                {
-                  Icon: Instagram,
-                  href: "https://www.instagram.com/el_banditak/",
-                  label: "Instagram",
-                },
-                {
-                  Icon: Mail,
-                  href: "mailto:aminkhimani.ak@gmail.com",
-                  label: "Email",
-                },
-              ].map(({ Icon, href, label }) => (
+              {[Linkedin, Instagram, Youtube, Mail].map((Icon, i) => (
                 <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  key={i}
+                  href="#"
                   className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-accent"
-                  aria-label={label}
+                  aria-label="Social link"
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.5} />
                 </a>
@@ -367,9 +324,7 @@ function Index() {
           {projects.map((p) => (
             <a
               key={p.title}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               className="group relative overflow-hidden rounded-xl bg-primary aspect-[4/5]"
             >
               <img
