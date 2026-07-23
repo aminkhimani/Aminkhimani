@@ -21,7 +21,7 @@ import {
   PenTool,
   ArrowUp,
 } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import heroPortrait from "@/assets/ChatGPT Image Jul 22, 2026, 04_31_13 PM.png";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
