@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Linkedin,
   Instagram,
-  Youtube,
   Mail,
   ArrowRight,
   ArrowUpRight,
@@ -21,7 +20,7 @@ import {
   PenTool,
   ArrowUp,
 } from "lucide-react";
-import heroPortrait from "@/assets/ChatGPT Image Jul 22, 2026, 04_31_13 PM.png";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
@@ -213,12 +212,30 @@ function Index() {
           {/* Social rail */}
           <div className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 hidden md:block z-20">
             <div className="flex flex-col items-center gap-4 rounded-lg border border-border bg-background/60 px-2 py-4">
-              {[Linkedin, Instagram, Youtube, Mail].map((Icon, i) => (
+              {[
+                {
+                  Icon: Linkedin,
+                  href: "https://www.linkedin.com/in/amin-h-khimani-05690626/",
+                  label: "LinkedIn",
+                },
+                {
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/el_banditak/",
+                  label: "Instagram",
+                },
+                {
+                  Icon: Mail,
+                  href: "mailto:aminkhimani.ak@gmail.com",
+                  label: "Email",
+                },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-accent"
-                  aria-label="Social link"
+                  aria-label={label}
                 >
                   <Icon className="h-4 w-4" strokeWidth={1.5} />
                 </a>
