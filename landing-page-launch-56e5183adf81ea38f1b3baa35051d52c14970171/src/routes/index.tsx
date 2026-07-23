@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Linkedin,
@@ -18,21 +18,16 @@ import {
   Film,
   Wand2,
   PenTool,
-  ArrowUp,
 } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.png";
-import projectLandCruiser from "@/assets/project-land-cruiser.jpg";
-import projectSitara from "@/assets/project-sitara.jpg";
-import project3Bahadur from "@/assets/project-3bahadur.jpg";
-import projectUmroAyyar from "@/assets/project-umro-ayyar.png";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 import showreelImg from "@/assets/showreel.jpg";
 import resumeUrl from "@/assets/Amin_Khimani_Resume.pdf";
+import { Panel, SiteHeader, SiteFooter } from "@/components/site-layout";
+import { projects, categoryPages } from "@/lib/projects-data";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
-
-const nav = ["Home", "About", "Work", "Services", "Experience", "Contact"];
 
 const services = [
   { icon: Sparkles, label: "VFX & Compositing" },
@@ -41,41 +36,6 @@ const services = [
   { icon: Film, label: "Video Editing" },
   { icon: Wand2, label: "AI Creative" },
   { icon: PenTool, label: "Concept Design" },
-];
-
-const filters = [
-  "All",
-  "3D and Composite",
-  "Motion Graphics and Commercials",
-  "Graphic Design and Social Media",
-  "AI Videos and UGCs",
-];
-
-const projects = [
-  {
-    img: projectLandCruiser,
-    title: "Land Cruiser 2022 World Premiere",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=CyRb6fstU3M",
-  },
-  {
-    img: projectSitara,
-    title: "Sitara: Let Girls Dream",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=EztDSGZb2xY",
-  },
-  {
-    img: project3Bahadur,
-    title: "3 Bahadur: Rise of the Warriors",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=ZrFGEbvuweo",
-  },
-  {
-    img: projectUmroAyyar,
-    title: "Umro Ayyar: A New Beginning",
-    tag: "3D and Composite",
-    href: "https://www.youtube.com/watch?v=qO4kobD35kM",
-  },
 ];
 
 const stats = [
@@ -162,75 +122,12 @@ const testimonials = [
   },
 ];
 
-function Logo() {
-  return (
-    <span
-      className="font-display text-3xl leading-none font-semibold tracking-tight"
-      aria-label="Amin H. Khimani"
-    >
-      A<span className="align-top">HK</span>
-    </span>
-  );
-}
-
-function Panel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border border-[var(--panel-border)] bg-[var(--panel)] ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
 function Index() {
   const [playShowreel, setPlayShowreel] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
-      <header className="mx-auto max-w-7xl px-6 pt-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Logo />
-            <div className="hidden sm:block border-l border-border pl-3">
-              <div className="text-sm font-semibold tracking-[0.18em]">AMIN H. KHIMANI</div>
-              <div className="text-[10px] tracking-[0.22em] text-muted-foreground">
-                VISUAL STORYTELLER &amp; CREATIVE DIRECTOR
-              </div>
-            </div>
-          </div>
-
-          <nav className="hidden lg:flex items-center gap-9 text-[11px] tracking-[0.22em] font-medium">
-            {nav.map((item, i) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className={`relative py-1 transition-colors hover:text-foreground ${
-                  i === 0 ? "text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                {item.toUpperCase()}
-                {i === 0 && (
-                  <span className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 bg-accent" />
-                )}
-              </a>
-            ))}
-          </nav>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-[11px] font-semibold tracking-[0.22em] text-primary-foreground transition-transform hover:-translate-y-0.5"
-          >
-            LET&apos;S TALK
-          </a>
-        </div>
-      </header>
+      <SiteHeader activeHash="" />
 
       {/* Hero */}
       <section className="relative mx-auto max-w-7xl px-6 pt-14 pb-8">
@@ -341,26 +238,16 @@ function Index() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 className="text-[13px] font-semibold tracking-[0.28em]">SELECTED WORK</h2>
           <div className="flex flex-wrap items-center gap-7 text-[11px] tracking-[0.22em] font-medium">
-            {filters.map((f, i) => (
-              <button
-                key={f}
-                className={`relative py-1 transition-colors ${
-                  i === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
+            {categoryPages.map((c) => (
+              <Link
+                key={c.path}
+                to={c.path}
+                className="relative py-1 text-muted-foreground transition-colors hover:text-foreground"
               >
-                {f.toUpperCase()}
-                {i === 0 && (
-                  <span className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 bg-accent" />
-                )}
-              </button>
+                {c.label.toUpperCase()}
+              </Link>
             ))}
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-[11px] font-semibold tracking-[0.22em] transition-colors hover:bg-secondary"
-          >
-            VIEW ALL PROJECTS <ArrowRight className="h-3.5 w-3.5" />
-          </a>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -647,25 +534,7 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="mx-auto max-w-7xl px-6 py-10 mt-10">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <Logo />
-            <span>© 2026 Amin H. Khimani All Rights Reserved.</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground">Terms &amp; Conditions</a>
-            <button
-              aria-label="Back to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-border transition-colors hover:text-foreground"
-            >
-              <ArrowUp className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
