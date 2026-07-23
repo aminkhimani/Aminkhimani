@@ -20,11 +20,11 @@ import {
   PenTool,
   ArrowUp,
 } from "lucide-react";
-import heroPortrait from "@/assets/ChatGPT Image Jul 22, 2026, 04_31_13 PM.png";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
+import heroPortrait from "@/assets/hero-portrait.jpg";
+import projectLandCruiser from "@/assets/project-land-cruiser.jpg";
+import projectSitara from "@/assets/project-sitara.jpg";
+import project3Bahadur from "@/assets/project-3bahadur.jpg";
+import projectUmroAyyar from "@/assets/project-umro-ayyar.png";
 import showreelImg from "@/assets/showreel.jpg";
 import resumeUrl from "@/assets/Amin_Khimani_Resume.pdf";
 
@@ -43,13 +43,39 @@ const services = [
   { icon: PenTool, label: "Concept Design" },
 ];
 
-const filters = ["All", "VFX", "Motion Graphics", "3D", "Editing", "AI"];
+const filters = [
+  "All",
+  "3D and Composite",
+  "Motion Graphics and Commercials",
+  "Graphic Design and Social Media",
+  "AI Videos and UGCs",
+];
 
 const projects = [
-  { img: work1, title: "Cinematic Trailer", tag: "VFX & Compositing" },
-  { img: work2, title: "Brand Film", tag: "Motion Design" },
-  { img: work3, title: "3D Product Launch", tag: "3D Animation" },
-  { img: work4, title: "Music Video", tag: "Editing" },
+  {
+    img: projectLandCruiser,
+    title: "Land Cruiser 2022 World Premiere",
+    tag: "3D and Composite",
+    href: "https://www.youtube.com/watch?v=CyRb6fstU3M",
+  },
+  {
+    img: projectSitara,
+    title: "Sitara: Let Girls Dream",
+    tag: "3D and Composite",
+    href: "https://www.youtube.com/watch?v=EztDSGZb2xY",
+  },
+  {
+    img: project3Bahadur,
+    title: "3 Bahadur: Rise of the Warriors",
+    tag: "3D and Composite",
+    href: "https://www.youtube.com/watch?v=ZrFGEbvuweo",
+  },
+  {
+    img: projectUmroAyyar,
+    title: "Umro Ayyar: A New Beginning",
+    tag: "3D and Composite",
+    href: "https://www.youtube.com/watch?v=qO4kobD35kM",
+  },
 ];
 
 const stats = [
@@ -341,7 +367,9 @@ function Index() {
           {projects.map((p) => (
             <a
               key={p.title}
-              href="#"
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative overflow-hidden rounded-xl bg-primary aspect-[4/5]"
             >
               <img
