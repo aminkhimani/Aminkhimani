@@ -355,10 +355,6 @@ function Index() {
               </button>
             ))}
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-[11px] font-semibold tracking-[0.22em] transition-colors hover:bg-secondary"
-          >
             VIEW ALL PROJECTS <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
