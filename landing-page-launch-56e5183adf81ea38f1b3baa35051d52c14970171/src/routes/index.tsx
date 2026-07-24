@@ -20,7 +20,7 @@ import {
   PenTool,
   ArrowUp,
 } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import heroPortrait from "@/assets/hero-portrait.png";
 import projectLandCruiser from "@/assets/project-land-cruiser.jpg";
 import projectSitara from "@/assets/project-sitara.jpg";
 import project3Bahadur from "@/assets/project-3bahadur.jpg";
