@@ -342,26 +342,6 @@ function Index() {
           <h2 className="text-[13px] font-semibold tracking-[0.28em]">SELECTED WORK</h2>
           <div className="flex flex-wrap items-center gap-7 text-[11px] tracking-[0.22em] font-medium">
             {filters.map((f, i) => (
-              <button
-                key={f}
-                className={`relative py-1 transition-colors ${
-                  i === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {f.toUpperCase()}
-                {i === 0 && (
-                  <span className="absolute -bottom-0.5 left-1/2 h-[2px] w-6 -translate-x-1/2 bg-accent" />
-                )}
-              </button>
-            ))}
-          </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-[11px] font-semibold tracking-[0.22em] transition-colors hover:bg-secondary"
-          >
-            VIEW ALL PROJECTS <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((p) => (
